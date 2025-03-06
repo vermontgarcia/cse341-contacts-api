@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Vermont",
+    "lastName": "Garcia",
+    "email": "vermontgarcia@gmail.com",
+    "favoriteColor": "blue",
+    "birthday": "02/12"
+  },
+  {
+    "firstName": "Elena",
+    "lastName": "Martinez",
+    "email": "elena.martinez@email.com",
+    "favoriteColor": "green",
+    "birthday": "07/25"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "email": "james.anderson@email.com",
+    "favoriteColor": "red",
+    "birthday": "11/03"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Nguyen",
+    "email": "sophia.nguyen@email.com",
+    "favoriteColor": "purple",
+    "birthday": "05/18"
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Patel",
+    "email": "daniel.patel@email.com",
+    "favoriteColor": "yellow",
+    "birthday": "09/30"
+  }
+]
