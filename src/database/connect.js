@@ -9,8 +9,6 @@ const initDB = (callback) => {
     console.log("DB is already initialized!");
     return callback(null, database);
   }
-  console.log(process.env.DB_URL);
-  console.log(process.env.DB_NAME);
   mongoose
     .connect(process.env.DB_URL, { dbName: process.env.DB_NAME })
     .then((db) => {
