@@ -50,10 +50,84 @@ contactsRouter.get("/", getAllContacts);
  */
 contactsRouter.get("/:id", getContactById);
 
+/**
+ * @swagger
+ * /v1/contacts:
+ *   post:
+ *     summary: Create contact
+ *     description: Create a new contact.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Contact"
+ *     responses:
+ *       200:
+ *         description: Contact created successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ContactCreateResponse"
+ *       404:
+ *         description: Contact not found.
+ */
 contactsRouter.post("/", createContact);
 
-contactsRouter.patch("/:id", updateContact);
+/**
+ * @swagger
+ * /v1/contacts/{id}:
+ *   put:
+ *     summary: Update contact
+ *     description: Update a contact.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The unique ID of the contact.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Contact"
+ *     responses:
+ *       200:
+ *         description: Contact updated successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/ContactUpdateResponse"
+ *       404:
+ *         description: Contact not found.
+ */
+contactsRouter.put("/:id", updateContact);
 
+/**
+ * @swagger
+ * /v1/contacts/{id}:
+ *   delete:
+ *     summary: Delete contact
+ *     description: Delete a specific contact.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The unique ID of the contact.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Contact deleted successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/DeleteContactResponse"
+ *       404:
+ *         description: Contact not found.
+ */
 contactsRouter.delete("/:id", deleteContact);
 
 module.exports = contactsRouter;
