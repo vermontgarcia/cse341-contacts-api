@@ -17,7 +17,7 @@ content-type: application/json
 }
 
 ### Update Contact
-PATCH http://localhost:8080/v1/contacts/67cfc0ad66137bb35ce531f2 HTTP/1.1
+PUT http://localhost:8080/v1/contacts/67d08285b5e94c21f3e5a5e2 HTTP/1.1
 content-type: application/json
 
 {
