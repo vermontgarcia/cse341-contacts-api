@@ -1,0 +1,32 @@
+### Get All Contacts
+GET http://localhost:8080/v1/contacts HTTP/1.1
+
+### Get Contact by ID
+GET http://localhost:8080/v1/contacts/67cfc0e1424e74b3b2dffada HTTP/1.1
+
+### Create Contact
+POST http://localhost:8080/v1/contacts HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Dow",
+  "email": "john.dow@email.com",
+  "favoriteColor": "grey",
+  "birthday": "03/05"
+}
+
+### Update Contact
+PATCH http://localhost:8080/v1/contacts/67cfc0ad66137bb35ce531f2 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Jonny",
+  "lastName": "Deep",
+  "email": "jonny.deep@email.com",
+  "favoriteColor": "grey",
+  "birthday": "03/05"
+}
+
+### Delete Contact
+DELETE  http://localhost:8080/v1/contacts/67cfc0e1424e74b3b2dffada HTTP/1.1
