@@ -74,6 +74,39 @@ const options = {
             },
           },
         },
+        ContactCreateResponse: {
+          type: "object",
+          properties: {
+            msg: {
+              type: "string",
+              example: "Contact created successfully",
+            },
+            contact: {
+              $ref: "#/components/schemas/Contact",
+            },
+          },
+        },
+        ContactUpdateResponse: {
+          type: "object",
+          properties: {
+            msg: {
+              type: "string",
+              example: "Contact updated successfully",
+            },
+            contact: {
+              $ref: "#/components/schemas/Contact",
+            },
+          },
+        },
+        DeleteContactResponse: {
+          type: "object",
+          properties: {
+            msg: {
+              type: "string",
+              example: "Contact deleted successfully",
+            },
+          },
+        },
       },
     },
   },
