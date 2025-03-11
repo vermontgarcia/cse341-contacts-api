@@ -1,5 +1,11 @@
 const express = require("express");
-const { getContactById, getAllContacts } = require("../controlers/contacts");
+const {
+  getContactById,
+  getAllContacts,
+  createContact,
+  updateContact,
+  deleteContact,
+} = require("../controlers/contacts");
 
 const contactsRouter = express.Router();
 
@@ -43,5 +49,11 @@ contactsRouter.get("/", getAllContacts);
  *         description: Contact not found.
  */
 contactsRouter.get("/:id", getContactById);
+
+contactsRouter.post("/", createContact);
+
+contactsRouter.patch("/:id", updateContact);
+
+contactsRouter.delete("/:id", deleteContact);
 
 module.exports = contactsRouter;
