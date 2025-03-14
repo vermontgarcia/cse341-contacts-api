@@ -61,7 +61,7 @@ contactsRouter.get("/:id", getContactById);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/Contact"
+ *             $ref: "#/components/schemas/ContactBody"
  *     responses:
  *       200:
  *         description: Contact created successfully.
@@ -92,7 +92,7 @@ contactsRouter.post("/", createContact);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/Contact"
+ *             $ref: "#/components/schemas/ContactBody"
  *     responses:
  *       200:
  *         description: Contact updated successfully.

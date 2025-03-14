@@ -47,6 +47,32 @@ const options = {
             },
           },
         },
+        ContactBody: {
+          type: "object",
+          properties: {
+            firstName: {
+              type: "string",
+              example: "Elena",
+            },
+            lastName: {
+              type: "string",
+              example: "Martinez",
+            },
+            email: {
+              type: "string",
+              format: "email",
+              example: "elena.martinez@email.com",
+            },
+            favoriteColor: {
+              type: "string",
+              example: "green",
+            },
+            birthday: {
+              type: "string",
+              example: "07/25",
+            },
+          },
+        },
         ContactsResponse: {
           type: "object",
           properties: {
