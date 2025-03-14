@@ -26,7 +26,7 @@ const getContactById = async (req, res) => {
       return res.status(404).json({ msg: "Contact not found" });
     }
   } catch (error) {
-    console.log("Error getting contact from Database: ", error);
+    console.log("Error getting contact: ", error);
     return res.status(500).json({ error: "Getting Contact Error" });
   }
 };
@@ -46,7 +46,7 @@ const getAllContacts = async (req, res) => {
       .status(200)
       .json({ msg: "Contacts retrieved successfully", contacts });
   } catch (error) {
-    console.log("Error getting contacts from Database: ", error);
+    console.log("Error getting contacts: ", error);
     return res.status(500).json({ error: "Getting Contacts Error" });
   }
 };
@@ -64,19 +64,19 @@ const createContact = async (req, res) => {
       .status(200)
       .json({ msg: "Contact created successfully", contact });
   } catch (error) {
+    console.log("Error creating contact: ", error);
     return res.status(500).json({ error: "Creating Contact Error" });
   }
 };
 
 const updateContact = async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
   try {
     const contactRaw = await Contact.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
         new: true,
+        fields: projection,
       }
     );
     if (contactRaw) {
@@ -92,12 +92,12 @@ const updateContact = async (req, res) => {
       return res.status(404).json({ msg: "Contact not found" });
     }
   } catch (error) {
+    console.log("Error updating contact: ", error);
     return res.status(500).json({ error: "Updating Contact Error" });
   }
 };
 
 const deleteContact = async (req, res) => {
-  console.log(req.params.id);
   try {
     const contact = await Contact.findByIdAndDelete(req.params.id);
     if (contact) {
@@ -106,6 +106,7 @@ const deleteContact = async (req, res) => {
       return res.status(404).json({ msg: "Contact not found" });
     }
   } catch (error) {
+    console.log("Error deleting contact: ", error);
     return res.status(500).json({ error: "Deleting Contact Error" });
   }
 };
