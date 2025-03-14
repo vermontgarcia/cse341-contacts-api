@@ -1,18 +1,24 @@
 const Contact = require("../models/Contact");
 
+const projection = {
+  _id: 1,
+  firstName: 1,
+  lastName: 1,
+  email: 1,
+  favoriteColor: 1,
+  birthday: 1,
+};
+
 const getContactById = async (req, res) => {
   const contactId = req.params.id;
   try {
-    const contactRaw = await Contact.findById(contactId).lean();
+    const contactRaw = await Contact.findById(contactId, projection);
     if (contactRaw) {
       const contact = {
-        id: contactRaw._id,
-        ...contactRaw,
+        id: contactRaw.id,
+        ...contactRaw._doc,
+        _id: undefined,
       };
-      delete contact._id;
-      delete contact.created_at;
-      delete contact.updated_at;
-      delete contact.__v;
       return res
         .status(200)
         .json({ msg: "Contact retrieved successfully", contact });
@@ -27,16 +33,13 @@ const getContactById = async (req, res) => {
 
 const getAllContacts = async (req, res) => {
   try {
-    const contactsRaw = await Contact.find().lean();
+    const contactsRaw = await Contact.find({}, projection);
     const contacts = contactsRaw.map((contact) => {
       const newContact = {
-        id: contact._id,
-        ...contact,
+        id: contact.id,
+        ...contact._doc,
+        _id: undefined,
       };
-      delete newContact._id;
-      delete newContact.created_at;
-      delete newContact.updated_at;
-      delete newContact.__v;
       return newContact;
     });
     return res
@@ -49,18 +52,14 @@ const getAllContacts = async (req, res) => {
 };
 
 const createContact = async (req, res) => {
-  console.log(req.body);
   try {
-    const contactRaw = await Contact.create(req.body);
-    console.log("HERE", contactRaw);
+    const newContact = await Contact.create(req.body);
+    const contactRaw = await Contact.findById(newContact._id, projection);
     const contact = {
-      id: contactRaw._doc._id,
+      id: contactRaw.id,
       ...contactRaw._doc,
+      _id: undefined,
     };
-    delete contact._id;
-    delete contact.created_at;
-    delete contact.updated_at;
-    delete contact.__v;
     return res
       .status(200)
       .json({ msg: "Contact created successfully", contact });
@@ -79,16 +78,13 @@ const updateContact = async (req, res) => {
       {
         new: true,
       }
-    ).lean();
+    );
     if (contactRaw) {
       const contact = {
-        id: contactRaw._id,
-        ...contactRaw,
+        id: contactRaw.id,
+        ...contactRaw._doc,
+        _id: undefined,
       };
-      delete contact._id;
-      delete contact.created_at;
-      delete contact.updated_at;
-      delete contact.__v;
       return res
         .status(200)
         .json({ msg: "Contact updated successfully", contact });
