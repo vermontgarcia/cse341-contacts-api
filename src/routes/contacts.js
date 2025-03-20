@@ -1,11 +1,15 @@
-const express = require("express");
+const express = require('express');
 const {
   getContactById,
   getAllContacts,
   createContact,
   updateContact,
   deleteContact,
-} = require("../controlers/contacts");
+} = require('../controlers/contacts');
+const {
+  createContactRulesInterceptor,
+  validateRules,
+} = require('../utils/validator');
 
 const contactsRouter = express.Router();
 
@@ -23,7 +27,7 @@ const contactsRouter = express.Router();
  *             schema:
  *               $ref: "#/components/schemas/ContactsResponse"
  */
-contactsRouter.get("/", getAllContacts);
+contactsRouter.get('/', getAllContacts);
 
 /**
  * @swagger
@@ -48,7 +52,7 @@ contactsRouter.get("/", getAllContacts);
  *       404:
  *         description: Contact not found.
  */
-contactsRouter.get("/:id", getContactById);
+contactsRouter.get('/:id', getContactById);
 
 /**
  * @swagger
@@ -72,7 +76,12 @@ contactsRouter.get("/:id", getContactById);
  *       404:
  *         description: Contact not found.
  */
-contactsRouter.post("/", createContact);
+contactsRouter.post(
+  '/',
+  createContactRulesInterceptor(),
+  validateRules,
+  createContact
+);
 
 /**
  * @swagger
@@ -103,7 +112,7 @@ contactsRouter.post("/", createContact);
  *       404:
  *         description: Contact not found.
  */
-contactsRouter.put("/:id", updateContact);
+contactsRouter.put('/:id', updateContact);
 
 /**
  * @swagger
@@ -128,6 +137,6 @@ contactsRouter.put("/:id", updateContact);
  *       404:
  *         description: Contact not found.
  */
-contactsRouter.delete("/:id", deleteContact);
+contactsRouter.delete('/:id', deleteContact);
 
 module.exports = contactsRouter;
