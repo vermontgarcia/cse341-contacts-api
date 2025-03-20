@@ -1,12 +1,12 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 let database;
 
 const initDB = (callback) => {
   if (database) {
-    console.log("DB is already initialized!");
+    console.log('DB is already initialized!');
     return callback(null, database);
   }
   mongoose
@@ -19,14 +19,14 @@ const initDB = (callback) => {
       callback(null, database);
     })
     .catch((error) => {
-      console.error("DB connection error: ", error);
+      console.error('DB connection error: ', error);
       callback(error);
     });
 };
 
 const getDatabase = () => {
   if (!database) {
-    throw Error("Database not initialized");
+    throw Error('Database not initialized');
   }
   return database;
 };

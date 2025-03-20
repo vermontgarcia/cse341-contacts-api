@@ -1,14 +1,14 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerJsDoc = require('swagger-jsdoc');
 
 const options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "Contacts API",
-      version: "1.0.0",
-      description: "API documentation for managing contacts",
+      title: 'Contacts API',
+      version: '1.0.0',
+      description: 'API documentation for managing contacts',
     },
     servers: [
       {
@@ -18,125 +18,125 @@ const options = {
     components: {
       schemas: {
         Contact: {
-          type: "object",
+          type: 'object',
           properties: {
             id: {
-              type: "string",
-              example: "67c921fe5c73a5b0fffdd325",
+              type: 'string',
+              example: '67c921fe5c73a5b0fffdd325',
             },
             firstName: {
-              type: "string",
-              example: "Elena",
+              type: 'string',
+              example: 'Elena',
             },
             lastName: {
-              type: "string",
-              example: "Martinez",
+              type: 'string',
+              example: 'Martinez',
             },
             email: {
-              type: "string",
-              format: "email",
-              example: "elena.martinez@email.com",
+              type: 'string',
+              format: 'email',
+              example: 'elena.martinez@email.com',
             },
             favoriteColor: {
-              type: "string",
-              example: "green",
+              type: 'string',
+              example: 'green',
             },
             birthday: {
-              type: "string",
-              example: "07/25",
+              type: 'string',
+              example: '07/25',
             },
           },
         },
         ContactBody: {
-          type: "object",
+          type: 'object',
           properties: {
             firstName: {
-              type: "string",
-              example: "Elena",
+              type: 'string',
+              example: 'Elena',
             },
             lastName: {
-              type: "string",
-              example: "Martinez",
+              type: 'string',
+              example: 'Martinez',
             },
             email: {
-              type: "string",
-              format: "email",
-              example: "elena.martinez@email.com",
+              type: 'string',
+              format: 'email',
+              example: 'elena.martinez@email.com',
             },
             favoriteColor: {
-              type: "string",
-              example: "green",
+              type: 'string',
+              example: 'green',
             },
             birthday: {
-              type: "string",
-              example: "07/25",
+              type: 'string',
+              example: '07/25',
             },
           },
         },
         ContactsResponse: {
-          type: "object",
+          type: 'object',
           properties: {
             msg: {
-              type: "string",
-              example: "Contacts retrieved successfully",
+              type: 'string',
+              example: 'Contacts retrieved successfully',
             },
             contacts: {
-              type: "array",
+              type: 'array',
               items: {
-                $ref: "#/components/schemas/Contact",
+                $ref: '#/components/schemas/Contact',
               },
             },
           },
         },
         ContactByIdResponse: {
-          type: "object",
+          type: 'object',
           properties: {
             msg: {
-              type: "string",
-              example: "Contact retrieved successfully",
+              type: 'string',
+              example: 'Contact retrieved successfully',
             },
             contact: {
-              $ref: "#/components/schemas/Contact",
+              $ref: '#/components/schemas/Contact',
             },
           },
         },
         ContactCreateResponse: {
-          type: "object",
+          type: 'object',
           properties: {
             msg: {
-              type: "string",
-              example: "Contact created successfully",
+              type: 'string',
+              example: 'Contact created successfully',
             },
             contact: {
-              $ref: "#/components/schemas/Contact",
+              $ref: '#/components/schemas/Contact',
             },
           },
         },
         ContactUpdateResponse: {
-          type: "object",
+          type: 'object',
           properties: {
             msg: {
-              type: "string",
-              example: "Contact updated successfully",
+              type: 'string',
+              example: 'Contact updated successfully',
             },
             contact: {
-              $ref: "#/components/schemas/Contact",
+              $ref: '#/components/schemas/Contact',
             },
           },
         },
         DeleteContactResponse: {
-          type: "object",
+          type: 'object',
           properties: {
             msg: {
-              type: "string",
-              example: "Contact deleted successfully",
+              type: 'string',
+              example: 'Contact deleted successfully',
             },
           },
         },
       },
     },
   },
-  apis: ["./src/routes/*.js"], // Make sure your route files are scanned
+  apis: ['./src/routes/*.js'], // Make sure your route files are scanned
 };
 
 const swaggerSpec = swaggerJsDoc(options);

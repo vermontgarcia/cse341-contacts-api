@@ -1,4 +1,4 @@
-const Contact = require("../models/Contact");
+const Contact = require('../models/Contact');
 
 const projection = {
   _id: 1,
@@ -21,13 +21,13 @@ const getContactById = async (req, res) => {
       };
       return res
         .status(200)
-        .json({ msg: "Contact retrieved successfully", contact });
+        .json({ msg: 'Contact retrieved successfully', contact });
     } else {
-      return res.status(404).json({ msg: "Contact not found" });
+      return res.status(404).json({ msg: 'Contact not found' });
     }
   } catch (error) {
-    console.log("Error getting contact: ", error);
-    return res.status(500).json({ error: "Getting Contact Error" });
+    console.log('Error getting contact: ', error);
+    return res.status(500).json({ error: 'Getting Contact Error' });
   }
 };
 
@@ -44,10 +44,10 @@ const getAllContacts = async (req, res) => {
     });
     return res
       .status(200)
-      .json({ msg: "Contacts retrieved successfully", contacts });
+      .json({ msg: 'Contacts retrieved successfully', contacts });
   } catch (error) {
-    console.log("Error getting contacts: ", error);
-    return res.status(500).json({ error: "Getting Contacts Error" });
+    console.log('Error getting contacts: ', error);
+    return res.status(500).json({ error: 'Getting Contacts Error' });
   }
 };
 
@@ -62,10 +62,10 @@ const createContact = async (req, res) => {
     };
     return res
       .status(200)
-      .json({ msg: "Contact created successfully", contact });
+      .json({ msg: 'Contact created successfully', contact });
   } catch (error) {
-    console.log("Error creating contact: ", error);
-    return res.status(500).json({ error: "Creating Contact Error" });
+    console.log('Error creating contact: ', error);
+    return res.status(500).json({ error: 'Creating Contact Error' });
   }
 };
 
@@ -87,13 +87,13 @@ const updateContact = async (req, res) => {
       };
       return res
         .status(200)
-        .json({ msg: "Contact updated successfully", contact });
+        .json({ msg: 'Contact updated successfully', contact });
     } else {
-      return res.status(404).json({ msg: "Contact not found" });
+      return res.status(404).json({ msg: 'Contact not found' });
     }
   } catch (error) {
-    console.log("Error updating contact: ", error);
-    return res.status(500).json({ error: "Updating Contact Error" });
+    console.log('Error updating contact: ', error);
+    return res.status(500).json({ error: 'Updating Contact Error' });
   }
 };
 
@@ -101,13 +101,13 @@ const deleteContact = async (req, res) => {
   try {
     const contact = await Contact.findByIdAndDelete(req.params.id);
     if (contact) {
-      return res.status(200).json({ msg: "Contact deleted successfully" });
+      return res.status(200).json({ msg: 'Contact deleted successfully' });
     } else {
-      return res.status(404).json({ msg: "Contact not found" });
+      return res.status(404).json({ msg: 'Contact not found' });
     }
   } catch (error) {
-    console.log("Error deleting contact: ", error);
-    return res.status(500).json({ error: "Deleting Contact Error" });
+    console.log('Error deleting contact: ', error);
+    return res.status(500).json({ error: 'Deleting Contact Error' });
   }
 };
 
